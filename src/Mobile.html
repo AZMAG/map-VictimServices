@@ -1,0 +1,467 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+ <html manifest="mobile.manifest">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <title>Victim Services Map | Arizona</title>
+  <meta name="description" content="Maricopa County Mobile Victim Advocates Map">
+    <meta name="description" content="Arizona Domestic Violence Victim Services Web Map" />
+        <meta name="keywords" content="Domestic Violence, Victim Advocates, Victim Services Map, MAG, Maricopa Association of Governments, Maricopa County, Arizona Victim Services" />
+        <meta name="author" content="Maricopa Association of Governments" />
+        <meta name="contact" content="www.azmag.gov" />
+	<meta name="creation-date" content="03/11/2013" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=7,IE=9" />
+        <meta name="apple-mobile-web-app-capable" content="yes">  
+        <meta name="HandheldFriendly" content="True">   
+        <meta name="MobileOptimized" content="320"/>   
+  <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.4/js/dojo/dijit/themes/claro/claro.css">
+  <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.4/js/esri/dijit/css/Popup.css" />
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
+  <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.4/js/esri/css/esri.css" />
+  <!--<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>-->
+  <script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+ <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+  <script src="http://serverapi.arcgisonline.com/jsapi/arcgis/3.4/"></script>
+ <!-- ArcGIS API for JavaScript  
+  <script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=3.3"></script> -->
+
+<style>
+  p{
+   font-size: small;
+   text-align: justify;
+  }
+  #footer{
+    text-align: center;
+  }
+  h2{
+    text-align: center;
+    }
+                      /* Mobile Victim Advocates Style*/
+
+
+                  html, body {
+                        height: 100%;
+                        width: 100%;
+                        padding: 0px;
+                  }
+                  #head{
+                    padding: 0px;
+                  }
+                    .page-map #mapcontent, #spanishmap, #map { width: 100%; height: 100%; padding: 0; }
+            
+                      
+                  
+                 #map {
+                   width: 100% !important;
+                   height: 100% !important;
+                  }
+
+                  #mapPageEnglish {
+                  width:100%; 
+                  height:100%;
+            }
+		  #mapPageSpanish {
+                  width:100%; 
+                  height:100%;
+            }
+                  #main{
+                    height: 100%;
+                    width: 100%;
+                  }
+
+                  #foot{
+                    padding: 5px;
+                   
+                  }
+                  map.infoWindow{
+                    overflow: scroll; 
+                  }
+
+                  .esriSimpleSlider  div {
+                        height: 30px !important;
+                        width: 30px !important;
+                  }
+                  #legendDiv{
+                    top: 10px;
+                    position: relative;
+                    padding-left: 20px;
+           }
+                  #logo{
+                    vertical-align: middle;
+                    border: none;
+                  }
+                  #AZ{
+                    font-size: 8pt;
+                  }
+                  #gov{
+                    font-size: 10px;
+                    text-align: justify;
+                  }
+
+
+                  #map_graphics_layer{
+        -webkit-animation-duration: 3s;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-name: pulse;
+        -webkit-animation-timing-function: ease-in-out;
+      }
+
+
+                  .ui-bar-f {
+                border: 1px solid #005502;
+                background: #9d3f25;
+                color: #fff;
+                text-shadow: 0 1px 0 #fff;
+                background-image: -moz-linear-gradient(top, #92542c, #9d3f25);
+                background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #92542c),color-stop(1, #9d3f25));
+                -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#92542c', EndColorStr='#9d3f25')";
+        }
+
+        .ui-body-a, .ui-overlay-a {
+    color: #fff;
+    text-shadow: none;
+    font-weight: normal;
+}
+
+.esriPopup .titleButton.maximize {
+     display: none;
+}
+</style>
+<script type="text/javascript">
+      var djConfig = {
+        parseOnLoad: true
+      };
+    </script>
+ <script type="text/javascript">
+
+// returns a string if the provided service is available
+function getServiceString(serviceAttributeValue, serviceAttributeName) {
+
+    var outStr = '';
+    if (serviceAttributeValue == 1) 
+    {
+        outStr = serviceAttributeName;
+    }
+    return outStr;
+}
+</script>
+<script type="text/javascript">
+                  dojo.require("dijit.dijit");
+                  dojo.require("esri.map");
+                  dojo.require("esri.layers.FeatureLayer");
+                  dojo.require("esri.tasks.query");
+                  dojo.require("dojo.parser");
+		  dojo.require("esri.dijit.Popup");
+		  dojo.require("esri.dijit.InfoWindow");
+                  dojo.require("esri.dijit.Legend");
+                  dojo.require("esri.dijit.Scalebar");
+                  dojo.require("dojox.mobile");
+	//	  dojo.ready(function() {
+   //     $(document).ready(jQueryReady);
+//		  });
+
+      
+
+               var map;
+	       var identifyTask;
+	       var identifyParams;
+	       
+      var lods = [{"level" : 7, "resolution" : 1222.99245256249, "scale" : 4622324.434309}, 
+	{"level" : 8, "resolution" : 611.49622628138, "scale" : 2311162.217155}, 
+	{"level" : 9, "resolution" : 305.748113140558, "scale" : 1155581.108577}, 
+	{"level" : 10, "resolution" : 152.874056570411, "scale" : 577790.554289}, 
+	{"level" : 11, "resolution" : 76.4370282850732, "scale" : 288895.277144}, 
+	{"level" : 12, "resolution" : 38.2185141425366, "scale" : 144447.638572}, 
+	{"level" : 13, "resolution" : 19.1092570712683, "scale" : 72223.819286}, 
+	{"level" : 14, "resolution" : 9.55462853563415, "scale" : 36111.909643}, 
+	{"level" : 15, "resolution" : 4.77731426794937, "scale" : 18055.954822}, 
+	{"level" : 16, "resolution" : 2.38865713397468, "scale" : 9027.977411}, 
+	{"level" : 17, "resolution" : 1.19432856685505, "scale" : 4513.988705}, 
+	{"level" : 18, "resolution" : 0.597164283559817, "scale" : 2256.994353}, 
+	{"level" : 19, "resolution" : 0.298582141647617, "scale" : 1128.497176}];
+      
+      function loadUrl(newLocation)
+{
+  window.location = newLocation;
+  return false;
+}
+      
+
+      function init() {
+	
+	//setup the popup window 
+        var popup = new esri.dijit.Popup({
+          fillSymbol: new esri.symbol.SimpleFillSymbol(esri.symbol.SimpleFillSymbol.STYLE_SOLID, new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([255,0,0]), 2), new dojo.Color([255,255,0,0.25]))
+        }, dojo.create("div"));
+	
+	
+	    
+	
+
+	
+	
+	
+	
+
+      var startExtent = new esri.geometry.Extent({
+          "xmin":-12550000,
+          "ymin":3921100,
+          "xmax":-12403000,
+          "ymax":4013000,
+          "spatialReference":{"wkid":102100}});
+      
+        map = new esri.Map("map", {
+          extent: startExtent, 
+          infoTemplate: popup,
+          logo:false,
+	        lods: lods
+        });
+	dojo.connect(map, "onLoad", mapReady);
+      
+	
+         //create and add basemap layer
+        var layer = new esri.layers.ArcGISTiledMapServiceLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer");
+    
+   
+        //add police layer
+        var policeLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://geo.azmag.gov/GISMAG/rest/services/maps/VictimServices/MapServer");
+	
+	
+        //add county layer
+        var countyLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://geo.azmag.gov/GISMAG/rest/services/maps/MaricopaCountyBoundary/MapServer");
+	   
+	   
+	map.addLayers([layer, policeLayer,countyLayer]);
+    
+          dojo.connect(map,'onLayersAddResult',function(results){
+
+         //add the legend 
+          var legend = new esri.dijit.Legend({
+            map:map,
+            layerInfos:[{layer:policeLayer,title:" "}],
+            arrangement:esri.dijit.Legend.ALIGN_LEFT
+          },"legendDiv");
+          legend.startup();
+        });
+        
+        var scalebar = new esri.dijit.Scalebar({
+            map: map,
+            scalebarUnit:'english'
+          });
+
+	
+      
+
+        //resize the map when the browser resizes
+        dojo.connect(dijit.byId('map'), 'resize', map, map.resize);
+	  
+      
+      }
+ 
+
+      
+      
+      function mapReady(map){
+       dojo.connect(map,"onClick",executeIdentifyTask);
+       //create identify tasks and setup parameters 
+       identifyTask = new esri.tasks.IdentifyTask("http://geo.azmag.gov/GISMAG/rest/services/maps/VictimServices/MapServer");
+       
+       identifyParams = new esri.tasks.IdentifyParameters();
+       identifyParams.tolerance = 10;
+       identifyParams.returnGeometry = true;
+       identifyParams.layerIds = [0,1,2];
+       identifyParams.layerOption = esri.tasks.IdentifyParameters.LAYER_OPTION_ALL;
+       identifyParams.width  = map.width;
+       identifyParams.height = map.height;
+      }
+      
+      function executeIdentifyTask(evt) {
+        //console.log(evt);
+        identifyParams.geometry = evt.mapPoint;
+        identifyParams.mapExtent = map.extent;
+       
+        var deferred = identifyTask.execute (identifyParams);
+
+        deferred.addCallback(function (response) {
+            // response is an array of identify result objects
+            // Let's return an array of features.
+            return dojo.map(response, function (result) {
+                var feature = result.feature;
+                //feature.attributes.Name = result.layerName;
+                if (result.layerName === 'Law Enforcement') {
+       
+                    var template = new esri.InfoTemplate("", "${Name}<br/> ${Agency} <br /> ${AltName} <br/> ${Address}, ${City} <br/> <a href='http://${Web}' target='_blank'>Website</a>");
+                    feature.setInfoTemplate(template);
+                }
+                else if (result.layerName === 'Justice Courts') {
+       
+                    var template = new esri.InfoTemplate("", "<b>Court Name: </b>${CourtName}<br>"+"<b>Court Number: </b>${CourtNum}<br>"+"<b>Location: </b>${Address}, ${City}, ${Zip}<br>"+"<b>Phone: </b>${Phone}<br>"+"<b>Fax: </b>${Fax}");
+                    feature.setInfoTemplate(template);
+                }
+                else if (result.layerName === 'Victim Services') {
+
+
+
+                    // try and loop through the services???
+                    var servicesString = "";
+                    var serviceFields = ["SvcType_Crisis", "SvcType_Legal", "SvcType_Civil", "SvcType_Safe", "SvcType_Soc", "SvcType_Med", "SvcType_Shelter", "SvcType_PO", "SvcType_Refer", "SvcType_OnLocCoun", "SvcType_OnLocFin", "SvcType_RefFin"];
+                    var serviceNames = ["Crisis Response", "Criminal Legal Advocacy", "Civil Legal Advocacy", "Safety Planning", "Social Services Referral", "Medical Referral", "Shelter Referral", "Assist with Order of Protection", "Referrals for Counseling", "On Location Counseling", "On Location Financial Assistance", "Referrals for Financial Assistance"];
+                    for (i = 0; i < serviceFields.length; i++) 
+                    {
+                        if (feature.attributes[serviceFields[i]] == 1) 
+                        {
+                           servicesString = servicesString + "<tr>&nbsp;&nbsp;-&nbsp; " + serviceNames[i] + "</tr><br>";
+                        }
+                    }
+
+
+
+                    var template = new esri.InfoTemplate("",
+                              
+                                "<b>Agency: </b><td>${Agency}<br/>" +
+                                "<b>Address: </b><td>${Address}<br/>" +
+                                "<b>City: </b>${City}<br/>" +
+                                "<b>Phone: </b>${Phone}<br/>" +
+                                "<b>Hours: </b>${Hours}<br/>" +
+                                "<a href='http://${Web}' target='_blank'>Website</a><br/>" +
+                                "<b>Services Available: </b><br/>" +
+                                servicesString);
+
+
+
+
+                    feature.setInfoTemplate(template);
+
+
+
+
+                }
+                return feature;
+            });
+        });
+
+      
+        // InfoWindow expects an array of features from each deferred
+        // object that you pass. If the response from the task execution 
+        // above is not an array of features, then you need to add a callback
+        // like the one above to post-process the response and return an
+        // array of features.
+        map.infoWindow.setFeatures([ deferred ]);
+        map.infoWindow.show(evt.mapPoint);
+      }
+      
+      
+  
+ function orientationChanged() {
+        if(map){
+          resizeMap();
+        }
+      }
+      function resizeMap(){
+      if(map){        
+        $('#map').css("height",screen.height);
+        $('#map').css("width","auto");
+
+        map.reposition();
+        map.resize();
+      }
+     }
+
+      dojo.addOnLoad(init);
+
+</script>
+
+
+</head>
+
+
+<body onorientationchange="orientationChanged();"> 
+   <div data-role="page" id="mapPageEnglish" class="page-map" data-theme="a">
+   <header data-role="header" data-position="fixed" data-theme="a">
+    <a href="javascript:void" data-theme='a' class='ui-btn-left' data-role="button" data-mini="true" onclick="return loadUrl('http://geo.azmag.gov/maps/VictimAdvocates/spanishMobile.html');">Espa&#241;ol</a>
+	<h3>AZ Victim Services</h3>
+	<a href="#mapPageEnglish" data-icon="home" data-mini="true">Home</a>
+  </header>
+<!-- /header -->
+
+ <div data-role="content" id="mapcontent">
+        <div id="map"></div>
+      </div>
+  
+  <footer data-role="footer" data-position="fixed" data-theme="a">
+    <p id="footer"><a href="http://www.azmag.gov"><img src="images/smallLogo.png"></a><br/>&copy; 2013</p>
+    <div data-role="navbar" data-id="mobilenav" data-theme="a">
+<ul>
+
+  <li><a href="#legendDialog">Legend</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
+</div>
+  </footer>
+</div>
+    
+    
+
+  
+  
+  <!-- legend -->
+  
+  <div data-role="page" id="legendDialog">
+  <header data-role="header" data-position="fixed" data-theme="a">
+<a href="javascript:void" data-theme='a' class='ui-btn-left' data-role="button" data-mini="true" onclick="return loadUrl('http://geo.azmag.gov/maps/VictimAdvocates/spanishMobile.html');">Espa&#241;ol</a>
+	<h3>AZ Victim Services</h3>
+	<a href="#mapPageEnglish" data-icon="home">Home</a>
+  </header>
+<!-- /header -->
+<article data-role="content" data-theme="a">
+  
+<h1>Legend</h1>
+<div id="legendDiv"></div>
+      
+ </article>
+  <footer data-role="footer" data-position="fixed" data-theme="a">
+    <p id="footer"><a href="http://www.azmag.gov"><img src="images/smallLogo.png"></a><br/>&copy; 2013</p>
+    <div data-role="navbar" data-id="mobilenav" data-theme="a">
+<ul>
+
+  <li><a href="#legendDialog">Legend</a></li> 
+  <li><a href="#about">About</a></li>
+</ul>
+</div>
+  </footer>
+</div>
+
+
+
+
+
+ <!-- about -->
+
+
+<div data-role="page" id="about">
+  <header data-role="header" data-position="fixed" data-theme="a">
+<a href="javascript:void" data-theme='a' class='ui-btn-left' data-role="button" data-mini="true" onclick="return loadUrl('http://geo.azmag.gov/maps/VictimAdvocates/spanishMobile.html');">Espa&#241;ol</a>
+	<h3>AZ Victim Services</h3>
+	<a href="#mapPageEnglish" data-icon="home">Home</a>
+  </header>
+<!-- /header -->
+<article data-role="content" data-theme="a">
+
+      <h2>About this app</h2>
+      <p>This project was supported by Grant No. <b>ST-WSG-12-2366-12</b>, awarded by the Governor&apos;s Office for Children, Youth and Families. The opinions, findings, conclusions, and recommendations expressed in this publication/program/exhibition are those of the author(s) and do not necessarily reflect the views of the U.S. Department of Justice, Office on Violence Against Women or the Governor&apos;s Office.
+	
+      </p>
+ </article>
+  <footer data-role="footer" data-position="fixed" data-theme="a">
+    <p id="footer"><a href="http://www.azmag.gov"><img src="images/smallLogo.png"></a><br/>&copy; 2013</p>
+    <div data-role="navbar" data-id="mobilenav" data-theme="a">
+<ul>
+
+  <li><a href="#legendDialog">Legend</a></li> 
+  <li><a href="#about">About</a></li>
+</ul>
+</div>
+  </footer>
+</div>
+</body>
+</html>

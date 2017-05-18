@@ -1,0 +1,159 @@
+/*  ///Victim Advocates Style Sheet /// */
+ 
+ html, body { 
+        height: 100%; 
+        width: 100%; 
+        position: absolute;
+        margin: 0; 
+        font-family: Arial, "MS Trebuchet", sans-serif;
+        font-size: 11pt;
+      } 
+
+      #header {
+        background-image: url("../images/banner.jpg"); 
+        background-repeat: repeat-x;
+        margin: 5px;
+        border: solid 4px #224a54;
+        color:#D9D9D9; 
+        font-size:18pt; 
+        text-align:left; 
+        font-weight:bold; 
+        height:8%;
+        
+      }
+
+      .esriScalebar{
+        padding: 20px 20px;
+      }
+ 
+     .twitter-share-button{
+      height: 10px;
+      border: 0px;
+     }
+    
+      
+      #subheader {
+        padding-left:10px;
+        
+      }
+      #AZ{
+        font-size: 15px;
+      }
+      #BasemapToggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 50;
+    }
+
+
+     .ul { 
+     list-style-type: none;
+      font-size: 12px;
+      padding: 0px;
+    }
+     
+      #facebook{
+       position: absolute; 
+        margin-left: 20px;
+        margin-right: 5px;
+        border: 0px;
+      }
+
+      #symbol{
+        cursor: hand;
+
+      }
+
+      #rightPane{
+        position: static; 
+        background-color:white;
+        color:#3f3f3f;
+        border: solid 2px #224a54;
+        margin: 5px;
+        padding:2px;
+      }
+      #leftPane{
+      position: static; 
+        margin: 5px;
+        padding:2px;
+        background-color:white;
+        color:#3f3f3f;
+        border: solid 2px #224a54;
+    
+     }
+      #map {
+        position: static;
+        margin: 5px;
+        border:solid 5px #224a54;
+        padding:0;
+        height: 100%;
+        width: 100%;
+ 
+      }
+      #footer {
+        position: static;
+        margin: 2px;
+        border: solid 2px #224a54;
+        background-color:#ecefe4;
+        color:#3f3f3f;
+       font-size:20pt; 
+       text-align:justify; 
+       height:5%;
+
+      }
+      .dijitTabInnerDiv{
+        background-color:#ecefe4;
+      }
+ 
+
+      #disclaimer{
+        padding: 2px;
+        bottom: 10px;
+        font-size: 8pt;
+
+      }
+   
+      #accordion{
+        height: 250px;
+        padding: 10px;
+      }
+
+
+      #danger{
+        color: #B3002A;
+        text-shadow: #DDD 5px 5px 2px;
+        border-bottom: 10px;
+      }
+      #contactNumbers{
+        text-align: left;
+        color: black;
+        font-size: 14px;
+      }
+
+      #legendDiv{
+        top: 10px;
+        position: static; 
+        padding-left: 20px;
+        
+      }
+      #V{
+        position: static;
+      }
+     #dropdownButtonContainer{
+      position: top;
+      bottom-margin:30px;
+      top-margin: 30px;
+     }
+
+      #hispanic {
+      font-size: 14px;
+      position: static;
+     }
+     #englishButton {
+      font-size: 14px;
+      position: static;
+    }
+      #table{
+          top-margin:30px;
+      }

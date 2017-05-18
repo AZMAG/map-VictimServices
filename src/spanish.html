@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <!--The viewport meta tag is used to improve the presentation and behavior of the samples on iOS devices-->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+    <meta name="description" content="Arizona Domestic Violence Victim Services Web Map" >
+    <meta name="keywords" content="Domestic Violence, Victim Advocates, Victim Services Map, MAG, Maricopa Association of Governments, Maricopa County, Arizona Victim Services">
+    <meta name="author" content="Maricopa Association of Governments, AS">
+    <meta name="contact" content="www.azmag.gov">
+    <meta name="url" content="http://geo.azmag.gov/maps/VictimAdvocates">
+    <meta name="creation-date" content="00/00/0000">
+    <meta name="revision-date" content="03/17/2015">
+    <meta name="version" content="2.3.0">
+    <title>Victim Services Map</title>
+<!-- Fav and touch icons -->
+    <link rel="apple-touch-icon" type="image/png" sizes="144x144" href="images/magicon_144.png">
+    <link rel="apple-touch-icon" type="image/png" sizes="114x114" href="images/magicon_114.png">
+    <link rel="apple-touch-icon" type="image/png" sizes="72x72" href="images/magicon_72.png">
+    <link rel="apple-touch-icon" type="image/png" sizes="57x57" href="images/magicon_57.png">
+    <link rel="shortcut icon" type="image/png" href="images/magfavicon.png">
+    <!-- css stylesheets used to customize the UI of the application -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/2.8/js/dojo/dijit/themes/claro/claro.css">
+    <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/2.8/js/esri/dijit/css/Popup.css">
+
+<script type="text/javascript">
+function touchAndGo(where) {
+  var ua = navigator.userAgent.toLowerCase();
+  if (ua.search("iphone") > -1 ||  ua.search("ipod") > -1 ||   ua.search("ipad") > -1 || ua.search("android") > -1 ||  ua.search("blackberry") > -1 || screen.width <= 480) {
+    location.href=where;
+  }
+}
+touchAndGo("Mobile.html");
+</script>
+
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+</script>
+
+
+ <script>
+// fix for https://bugs.dojotoolkit.org/ticket/17400
+!document.firstChild.children && (document.firstChild.children = true);
+var dojoConfig = { parseOnLoad: true };</script>
+
+   <script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.8">
+    </script>
+    <script type="text/javascript" src="js/spanish.js">
+    </script>
+
+
+<!--<script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3">
+    </script> -->
+<script type="text/javascript">
+function reloadPage()
+  {
+  window.location.reload()
+  }
+
+function exit()
+  {
+   window.location.replace("http://www.google.com");
+  }
+  function mainPage()
+  {
+   window.location.href = "index.html";
+  }
+</script>
+    <script type="text/javascript">
+
+// returns a string if the provided service is available
+function getServiceString(serviceAttributeValue, serviceAttributeName) {
+
+    var outStr = '';
+    if (serviceAttributeValue == 1)
+    {
+        outStr = serviceAttributeName;
+    }
+    return outStr;
+}
+
+</script>
+
+  </head>
+  <body class="claro">
+
+
+    <div id="mainWindow" dojotype="dijit.layout.BorderContainer" design="headline"
+    gutters="false" style="width:100%; height:100%;">
+     <div id="header" dojotype="dijit.layout.ContentPane" region="top">
+        <img src="images/MAGlogo.png" align="right">
+        <div id="subheader">Referencia de Servicios para Abogadores de Victimas de Violencia Domestica<div id="AZ">Arizona</div></div>
+      </div>
+
+<!-- Map pane -->
+      <div id="map" dojotype="dijit.layout.ContentPane" region="center" gutter="false"></div>
+<!-- left pane -->
+      <div dojotype="dijit.layout.ContentPane" id="leftPane" region="left" gutters="false" splitter="false" style="width:20%;">
+
+              <center><h3 id="danger">Si se encuentra en peligro inmediato,<br/>
+               por favor llame al 911.</h3>
+
+
+              <button id="Escape" dojotype="dijit.form.Button" onclick="exit()"  onmouseover="images/hover.png">Haga clic para salir sitio web ahora</button>
+
+              <br />
+              <br/>
+              Para más información, clic en cualquiera símbolo en el mapa.<br/>
+              </center>
+
+            <div dojotype="dijit.layout.AccordionContainer" id="accordion" region="leading">
+                  <div dojotype="dijit.layout.AccordionPane" title="Clave del Mapa">
+                          <div id="legendDiv"></div>
+                        </div>
+
+                        <div dojotype="dijit.layout.AccordionPane" title="Ubique servicios a su alrededor" selected="true">
+                           Anote una dirección para ampliar el área.
+                        <br />
+                        <!-- *** UPDATED BY SCOTT *** -->
+                        <textarea type="text" id="address" onkeyup="myKeyUpMethod(this, event)"/>Dirección, Ciudad, Estado</textArea>
+
+                        <br />
+                        <button dojotype="dijit.form.Button" onclick="locate(), mapReady(map)">Localice</button>&nbsp;<button dojotype="dijit.form.Button" onclick="refresh(), mapReady(map)">Regenere el Mapa
+                      </button>
+                        </div>
+
+                        <div dojotype="dijit.layout.AccordionPane" title="Ayuda con el Mapa">
+                Amplifique el mapa usando la barra deslizante al lado izquierdo del mapa.<br />
+                <hr>
+                Para recorrer el mapa presione el botón izquierdo del ratón y recorra el mapa a su gusto.<br />
+                        </div>
+
+                          </div><!-- end AccordionContainer -->
+
+                <center>
+                  <a id="face" href="http://www.facebook.com/sharer.php?u=http://geo.azmag.gov/maps/VictimAdvocates" name="fb_share" target="_blank" onclick="goSocial(this, 'facebook')"><img src="images/facebook.png" title="Share to Facebook" id="facebook"/></a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-url="http://geo.azmag.gov/maps/VictimAdvocates" alt="Tweet">Tweet</a>
+                </center>
+
+
+          </div> <!-- /left pane -->
+
+
+
+
+<!-- Right pane -->
+      <div id="rightPane" dojotype="dijit.layout.ContentPane" region="right" splitter="true" style="width:15%;">
+        <div dojotype="dijit.layout.TabContainer">
+     <div dojotype="dijit.layout.ContentPane" title="Contactos" selected="true">
+
+
+       <p align="center" style="font-size:20px"><b>Recursos</b></p>
+
+      <p>
+<div id="dropdownButtonContainer">
+                  <button id="englishButton" dojotype="dijit.form.Button" onclick="mainPage()">English</button>
+              </div>
+</p>
+<div id="table">
+      <table>
+
+        <tr><td>
+<p id="contactNumbers">
+  <a href="http://www.thehotline.org/" target="_blank">National Domestic Violence Hotline</a><br/>
+    1-800-799-SAFE (7233)<br />
+    TDD: 1-800-787-3224<br /><br />
+
+    <a href="http://www.azcadv.org/" target="_blank">Arizona Coalition to End Sexual and Domestic Violence</a><br />
+     1-800-782-6400<br /><br />
+
+     <a href="http://www.azdhs.gov/phs/owch/women/domestic-violence/index.htm" target="_blank">Arizona Department of Health Services - Domestic Violence</a><br /><br />
+
+     <a href="http://www.mycommunitypt.com/arizona/index.php?option=com_cpx&task=search.query&code=BH-1800.1500-100" target="_blank">Arizona 2-1-1/Shelter Information</a><br />
+  2-1-1 (within Arizona) <br />
+  877-211-8661 (from anywhere)<br /><br />
+
+  <b>Centralized Screening</b><br/>
+    (480) 890-3039<br/>
+    (844) SAFE DVS <br/>
+    (844) 723-3387 <br/>
+
+  </p>
+</tr></td>
+
+</table>
+</div>
+        </div>
+<div dojotype="dijit.layout.ContentPane" title = "Servicios" selected="false">
+      <b>Asistencia con Órdenes de Protección</b><br />
+Una Orden de Protección es una restricción legal que prohíbe a una persona de cometer actos de violencia en el hogar o de contactar a las personas protegidas por la orden.<br /><br />
+
+<b>Abogacía Legal Civil </b><br />
+Un servicio que provee consulta o representación legal en casos civiles u otros asuntos legales.<br /><br />
+
+<b>Abogacía Legal Criminal </b><br />
+Un servicio que provee consulta o representación legal en casos criminales o asuntos.<br /><br />
+
+ <b>Intervención de Crisis</b><br />
+Un servicio para prevenir, establecer, o resolver un cambio agudo; cambio episódico o un cambio previsto en la condición y salud de comportamiento que pueda dar lugar a una descompensación de la persona, una recaída, hospitalización, o existe el riesgo de daño a sí mismo o a los demás.<br /><br />
+
+<b>Consejería En-localización</b><br />
+Servicios de asesoramiento y consejería disponible en-localización.<br /><br />
+
+<b>Asistencia Financiera En-localización</b><br />
+Servicios que provee un tipo de ayuda financiera para cubrir costos necesarios e inmediatos.<br /><br />
+
+<b>Referencias</b><br />
+
+Un servicio que identifica y analiza necesidades; explora opciones; establece metas para desarrollar un curso de acción que dará lugar a una condición deseada o evento en una ocasión futura.
+***Dicha referencias pueden incluir servicios sociales, alberges, servicios médicos, ayuda financiera y consejería.***
+<br /><br />
+
+<b>Planificación de Seguridad</b><br />
+Un servicio que identifica y analiza necesidades; explora opciones; establece metas para desarrollar un curso de acción que dará lugar a una condición o evento de seguridad en el futuro.
+
+    </div>
+      </div>
+      </div>
+      <div id="footer" dojotype="dijit.layout.ContentPane" region="bottom" >
+       <div id="disclaimer">Este proyecto es apoyado por el subsidio N º <b>ST-WSG-12-2366-12</b>, otorgado por la oficina en contra de la Violencia a la Mujer, Departamento de Justicia de EE.UU. y la División de la Mujer de la Oficina para Niños, Jóvenes y Familias de la Gobernadora. Las opiniones, resultados, conclusiones y recomendaciones expresadas en esta publicación son las del autor (es) y no reflejan necesariamente las opiniones del Departamento de Justicia, Oficina en contra de la Violencia a la Mujer o de la Oficina de la Gobernadora.
+</div>
+          </div>
+
+    </div>
+  </body>
+
+</html>
