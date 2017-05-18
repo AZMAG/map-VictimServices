@@ -1,0 +1,36 @@
+{
+  "name": "VictimServices-Project",
+  "version": "2.3.0",
+  "date": "03/17/2015",
+  "description": "Victim Services Viewer",
+  "keywords": ["Domestic Violence", "Victim Advocates", "Victim Services", "Maricopa", "County", "Arizona", "AZ", "MAG", "maps", "ESRI", "#MAGmaps"],
+  "main": "index.js",
+  "homepage": "http://geo.azmag.gov/maps/VictimServices/",
+  "author": "Vern Wolfley <vwolfley@azmag.gov>",
+  "contributors": [{
+    "name": "Vern Wolfley",
+    "email": "vwolfley@azmag.gov"
+  }, {
+    "name": "Jack Fairfield",
+    "email": "jfairfield@azmag.gov"
+  }],
+  "private": true,
+"dependencies": {
+
+  },
+  "devDependencies": {
+    "grunt": "0.4.5",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-cssmin": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-text-replace": "*",
+    "grunt-version-check": "*",
+    "jshint-stylish-ex": "*",
+    "lodash": "*",
+    "matchdep": "*",
+    "normalize.css": "*"
+  },
+  "license": "MIT"
+}
