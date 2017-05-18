@@ -42,13 +42,13 @@ And constructed with the following guidelines:
 
 ## Site URL's
 
-* [http://geo.azmag.gov/maps/VictimAdvocates/] (http://geo.azmag.gov/maps/VictimAdvocates/)
+* [http://geo.azmag.gov/maps/VictimAdvocates/](http://geo.azmag.gov/maps/VictimAdvocates/)
 
 ## Documentation
 
 A detailed list of the changes and fixes in each version update can be found in the `CHANGELOG.md`.
 
-* [CHANGELOG] (CHANGELOG.md)
+* [CHANGELOG](CHANGELOG.md)
 
 ## Resources
 
@@ -71,7 +71,7 @@ Please acknowledge the Maricopa Association of Governments (MAG) GIS as the sour
 
 Code released under the MIT license.
 
-* [LICENSE] (LICENSE.txt)
+* [LICENSE](LICENSE.txt)
 
 Copyright (c) 2017 Maricopa Association of Governments
 
