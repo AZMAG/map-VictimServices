@@ -16,7 +16,7 @@ This JavaScript web app viewer was developed by MAG staff for the Human Services
 
 ## Keywords
 
-`Domestic Violence` `Victim Advocates` `Victim Services` `Victim Services` `Maricopa' 'County` `Arizona` `AZ` `Maps` `Maricopa Association of Governments` `MAG` `ESRI` `#MAGmaps`
+`Domestic Violence` `Victim Advocates` `Victim Services` `Victim Services` `Maricopa` `County` `Arizona` `AZ` `Maps` `Maricopa Association of Governments` `MAG` `ESRI` `#MAGmaps`
 
 ## Version
 
