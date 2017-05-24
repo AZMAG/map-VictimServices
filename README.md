@@ -78,5 +78,3 @@ A copy of the license is available in the repository's `LICENSE` file.
 * [LICENSE](LICENSE)
 
 
-
-
