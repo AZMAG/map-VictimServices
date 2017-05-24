@@ -1,0 +1,59 @@
+humanstxt.org/
+# The humans responsible & technology colophon
+==============================================
+
+# TEAM
+
+    Maricopa Association of Governments
+    	Name:  Vern Wolfley
+    	Role: GIS Analyst/Developer
+    	Contact:
+    	Twitter: @vernwolfley
+    	From: Litchfield Park, AZ, USA
+
+        Name:  Amanda Stanko
+        Role: GIS Analyst I
+        Contact:
+        Twitter:
+        From: Tempe, AZ, USA
+
+        Name:  Jack Fairfield
+        Role: Decision Support Analyst I
+        Contact:
+        Twitter:
+        From: Tempe, AZ, USA
+
+    	Name:  Jason Howard
+    	Role: GIS Program Manager
+    	Contact:
+    	Twitter:
+    	From: Chandler, AZ, USA
+
+        Name:  Anubhav Bagley
+        Role: Information Services Manager
+        Contact:
+        Twitter:
+        From: Phoenix, AZ, USA
+
+# THANKS
+    Governor's Office for Children, Youth and Families
+    MAG Human Services
+        * Amy St. Peter
+        * Brande Mead
+
+# TECHNOLOGY COLOPHON
+
+    Standards: HTML5, CSS3
+    Components: HTML5BoilerPlate, Normalize.css, jQuery, Modernizr, Require.js, ESRI Javascript API, Grunt
+
+# SITE
+
+    Site Name: Victim Services Application
+    Site URL: http://geo.azmag.gov/maps/VictimAdvocates/
+    Version: 2.3.0
+	Last updated: 03/17/2015
+    Creation date: 00/00/2012
+	Language: English
+	Doctype: HTML5
+	IDE: Sublime Text
+

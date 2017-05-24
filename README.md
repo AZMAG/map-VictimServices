@@ -3,7 +3,9 @@
 # Victim Services Viewer #
 MAG mapping application for Victim Services data
 
+[![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg?label=my-website)](http://geo.azmag.gov/maps/VictimAdvocates/)
 [![GitHub issues](https://img.shields.io/github/issues/AZMAG/map-VictimServices.svg)](https://github.com/AZMAG/map-VictimServices/issues)
+[![GitHub version](https://badge.fury.io/gh/AZMAG/map-VictimServices.svg)](https://badge.fury.io/gh/AZMAG/map-VictimServices)
 [![dependencies](https://david-dm.org/AZMAG/map-VictimServices.png)](https://david-dm.org/AZMAG/map-VictimServices)
 [![devDependency Status](https://david-dm.org/AZMAG/map-VictimServices/dev-status.png)](https://david-dm.org/AZMAG/map-VictimServices)
 [![Semver](http://img.shields.io/SemVer/2.0.0.png)](http://semver.org/spec/v2.0.0.html)
@@ -71,15 +73,10 @@ Please acknowledge the Maricopa Association of Governments (MAG) GIS as the sour
 
 Code released under the MIT license.
 
-* [LICENSE](LICENSE.txt)
+A copy of the license is available in the repository's `LICENSE` file.
 
-Copyright (c) 2017 Maricopa Association of Governments
+* [LICENSE](LICENSE)
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 
