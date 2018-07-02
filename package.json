@@ -1,7 +1,8 @@
 {
   "name": "VictimServices-app",
   "version": "2.3.0",
-  "date": "03/17/2015",
+  "date": "2015-03-17",
+  "copyright": "2015",
   "description": "Victim Services Viewer",
   "keywords": ["Domestic Violence", "Victim Advocates", "Victim Services", "Maricopa", "County", "Arizona", "AZ", "MAG", "maps", "ESRI", "#MAGmaps"],
   "main": "index.js",
