@@ -28,5 +28,5 @@ And constructed with the following guidelines:
 
 ***********************************************
 
-## Version 2.3.0 | 03/17/2015
+## Version 2.3.0 | 2015-03-17
 
