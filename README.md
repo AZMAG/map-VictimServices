@@ -4,10 +4,10 @@
 MAG mapping application for Victim Services data
 
 [![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg?label=my-website)](http://geo.azmag.gov/maps/VictimAdvocates/)
-[![GitHub issues](https://img.shields.io/github/issues/AZMAG/map-VictimServices.svg)](https://github.com/AZMAG/map-VictimServices/issues)
-[![GitHub version](https://badge.fury.io/gh/AZMAG/map-VictimServices.svg)](https://badge.fury.io/gh/AZMAG/map-VictimServices)
-[![dependencies](https://david-dm.org/AZMAG/map-VictimServices.png)](https://david-dm.org/AZMAG/map-VictimServices)
-[![devDependency Status](https://david-dm.org/AZMAG/map-VictimServices/dev-status.png)](https://david-dm.org/AZMAG/map-VictimServices)
+[![GitHub issues](https://img.shields.io/github/issues/MaricopaAssociationofGovernments/map-VictimServices.svg)](https://github.com/MaricopaAssociationofGovernments/map-VictimServices/issues)
+[![GitHub version](https://badge.fury.io/gh/MaricopaAssociationofGovernments/map-VictimServices.svg)](https://badge.fury.io/gh/MaricopaAssociationofGovernments/map-VictimServices)
+[![dependencies](https://david-dm.org/MaricopaAssociationofGovernments/map-VictimServices.png)](https://david-dm.org/MaricopaAssociationofGovernments/map-VictimServices)
+[![devDependency Status](https://david-dm.org/MaricopaAssociationofGovernments/map-VictimServices/dev-status.png)](https://david-dm.org/MaricopaAssociationofGovernments/map-VictimServices)
 [![Semver](http://img.shields.io/SemVer/2.0.0.png)](http://semver.org/spec/v2.0.0.html)
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
